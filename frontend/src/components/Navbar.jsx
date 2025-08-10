@@ -6,8 +6,9 @@ function Navbar() {
   const [visible, setVisible] = useState(false);
   return (
     <div className='flex items-center justify-between py-5 font-medium'>
-      <img src={assets.logo} className='w-56' alt='logo' />
-
+      <Link to='/'>
+        <img src={assets.logo} className='w-56' alt='logo' />
+      </Link>
       <ul className='hidden sm:flex gap-5 text-base text-gray-700'>
         <NavLink to='/' className='flex flex-col items-center gap-1'>
           <p>HOME</p>
@@ -54,10 +55,10 @@ function Navbar() {
             <img className='h-5 rotate-180' src={assets.dropdown_icon} alt="dropdown_icon" />
             <p className='ml-4 text-xl'>Back</p>
           </div>
-          <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/'>HOME</NavLink>
-          <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/collection'>COLLECTION</NavLink>
-          <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/about'>ABOUT</NavLink>
-          <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/contact'>CONTACT</NavLink>
+          <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/'>HOME</NavLink>
+          <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/collection'>COLLECTION</NavLink>
+          <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/about'>ABOUT</NavLink>
+          <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/contact'>CONTACT</NavLink>
         </div>
       </div>
     </div>
