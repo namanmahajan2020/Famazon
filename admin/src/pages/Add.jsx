@@ -19,8 +19,13 @@ const Add = ({ token }) => {
   const [bestseller, setBestseller] = useState(false);
   const [sizes, setSizes] = useState([]);
 
+  const [loading, setLoading] = useState(false);
+
   const onSubmintHandler = async (e) => {
     e.preventDefault();
+
+    if (loading) return;
+    setLoading(true);
 
     try {
 
@@ -61,6 +66,9 @@ const Add = ({ token }) => {
     } catch (error) {
       console.log(error);
       toast.error(error.message)
+    }
+    finally {
+      setLoading(false);
     }
   }
 
@@ -159,7 +167,7 @@ const Add = ({ token }) => {
         <label className='cursor-pointer' htmlFor="bestseller">Add to bestseller</label>
       </div>
 
-      <button type='submit' className='w-28 py-3 mt-4 bg-black text-white'>ADD</button>
+      <button type='submit' className={`w-28 py-3 mt-4 text-white ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-black'}`} disabled={loading}>{loading ? "Adding..." : "ADD"}</button>
 
     </form>
   )

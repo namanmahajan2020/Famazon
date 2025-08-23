@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { backendUrl, currency } from '../App'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { assets } from '../assets/assets'
 
 const List = ({ token }) => {
 
@@ -53,7 +54,7 @@ const List = ({ token }) => {
 
   }
 
-  
+
 
   useEffect(() => {
     fetchList()
@@ -78,12 +79,15 @@ const List = ({ token }) => {
 
         {
           list.map((item, index) => (
-            <div className='grid grid-cols-[1fr_3fr_1fr] md:grid-cols-[1fr_3fr_1fr_1fr_1fr] items-center gap-2 py-1 px-2 border border-gray-200 text-sm' key={index}>
+            <div className='grid grid-cols-[1fr_3fr_2fr_1fr_.4fr] md:grid-cols-[1fr_3fr_1fr_1fr_1fr] items-center gap-2 py-1 px-2 border border-gray-200 text-sm' key={index}>
               <img className='w-12' src={item.image[0]} alt="" />
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>{currency}{item.price}</p>
-              <p onClick={() => removeProduct(item._id)} className='text-right md:text-center cursor-pointer text-lg'>X</p>
+              <div onClick={() => removeProduct(item._id)} className='flex justify-center cursor-pointer'>
+              <img className='w-4.5' src={assets.bin_icon} alt="X" />
+              </div>
+
             </div>
           ))
         }
