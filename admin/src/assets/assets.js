@@ -11,6 +11,6 @@ export const assets = {
     order_icon,
     upload_area,
     parcel_icon,
-    list_icon
+    list_icon,
 }
 
