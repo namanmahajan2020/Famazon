@@ -4,7 +4,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import { assets } from '../assets/assets'
 
-const List = ({ token }) => {
+const List = ({token}) => {
 
   const [list, setList] = useState([])
 
@@ -12,7 +12,7 @@ const List = ({ token }) => {
 
     try {
 
-      const response = await axios.get(backendUrl + '/api/product/list', { headers: { token } })
+      const response = await axios.get(backendUrl + '/api/product/list')
 
       if (response.data.success) {
 
@@ -85,7 +85,7 @@ const List = ({ token }) => {
               <p>{item.category}</p>
               <p>{currency}{item.price}</p>
               <div onClick={() => removeProduct(item._id)} className='flex justify-center cursor-pointer'>
-              <img className='w-4.5' src={assets.bin_icon} alt="X" />
+                <img className='w-4.5' src={assets.bin_icon} alt="X" />
               </div>
 
             </div>
