@@ -14,7 +14,9 @@ const List = ({ token }) => {
       const response = await axios.get(backendUrl + '/api/product/list', { headers: { token } })
 
       if (response.data.success) {
+
         setList(response.data.products)
+
       }
       else {
         toast.error(response.data.message)
@@ -25,6 +27,33 @@ const List = ({ token }) => {
       toast.error(error.message)
     }
   }
+
+
+
+  const removeProduct = async (id) => {
+
+    try {
+
+      const response = await axios.post(backendUrl + '/api/product/remove', { id }, { headers: { token } })
+
+      if (response.data.success) {
+
+        toast.success(response.data.message)
+        await fetchList();
+
+      }
+      else {
+        toast.error(response.data.message)
+      }
+
+    } catch (error) {
+      console.log(error)
+      toast.error(error.message)
+    }
+
+  }
+
+  
 
   useEffect(() => {
     fetchList()
@@ -54,7 +83,7 @@ const List = ({ token }) => {
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>{currency}{item.price}</p>
-              <p className='text-right md:text-center cursor-pointer text-lg'>X</p>
+              <p onClick={() => removeProduct(item._id)} className='text-right md:text-center cursor-pointer text-lg'>X</p>
             </div>
           ))
         }
