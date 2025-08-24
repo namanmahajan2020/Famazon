@@ -2,7 +2,7 @@ import userModel from "../models/userModel.js"
 
 
 // add products to user cart
-const addToCart = async (res, req) => {
+const addToCart = async (req, res) => {
 
     try {
 
@@ -39,7 +39,7 @@ const addToCart = async (res, req) => {
 
 
 // update user cart
-const updateCart = async (res, req) => {
+const updateCart = async (req, res) => {
 
     try {
 
@@ -63,7 +63,7 @@ const updateCart = async (res, req) => {
 
 
 // get user cart data
-const getUserCart = async (res, req) => {
+const getUserCart = async (req, res) => {
 
     try {
 
