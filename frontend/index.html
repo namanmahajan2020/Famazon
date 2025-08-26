@@ -2,12 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- start with the first favicon frame -->
+    <link rel="icon" type="image/png" href="/fav/man (1).png" id="favicon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Famazon</title>
+
+    <script>
+      // build array of all frames (1 → 126)
+      const frames = [];
+      for (let i = 1; i <= 243; i++) {
+        frames.push(`/fav/man (${i}).png`);
+      }
+
+      let i = 0;
+      setInterval(() => {
+        // add cache-buster so browser refreshes favicon
+        document.getElementById("favicon").href =
+          frames[i % frames.length] + "?t=" + Date.now();
+        i++;
+      },30); // change speed (ms) here
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   </body>
 </html>

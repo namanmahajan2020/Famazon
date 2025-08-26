@@ -2,9 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- Start with the first frame -->
+    <link rel="icon" type="image/png" href="/fav/man (1).png" id="favicon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Famazon Admin Panel</title>
+
+    <script>
+      // Build array of all frames (1 → 126)
+      const frames = [];
+      for (let i = 1; i <= 126; i++) {
+        frames.push(`/fav/man (${i}).png`);
+      }
+
+      let i = 0;
+      setInterval(() => {
+        // Add cache-buster so browser reloads favicon each time
+        document.getElementById("favicon").href =
+          frames[i % frames.length] + "?t=" + Date.now();
+        i++;
+      }, 30); // change every 200ms (adjust speed here)
+    </script>
   </head>
   <body>
     <div id="root"></div>
