@@ -47,7 +47,7 @@ function Navbar() {
           <div className={`${token ? "group-hover:block hidden" : "hidden"} absolute dropdown-menu right-0 pt-4`}>
             <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded'>
               <p
-                onClick={() => window.location.href = "http://localhost:5174/admin"}
+                onClick={() => window.location.href = "https://famazon-admin.vercel.app"}
                 className='cursor-pointer hover:text-black'
               >
                 Admin
