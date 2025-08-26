@@ -39,12 +39,35 @@ const PlaceOrder = () => {
       order_id: order.id,
       receipt: order.receipt,
       handler: async (response) => {
-        console.log(response)
+        console.log(response);
+        try {
+          const { data } = await axios.post(
+            backendUrl + '/api/order/verifyRazorpay',
+            { ...response, orderId: order.id }, // pass orderId for backend reference
+            { headers: { token } }
+          );
+
+          if (data.success) {
+            setCartItems({});
+            navigate('/orders');
+          }
+
+        } catch (error) {
+          console.log(error);
+          toast.error("Payment verification failed");
+        }
+      },
+      modal: {
+        ondismiss: function () {
+          navigate('/cart');
+        }
       }
-    }
-    const rzp = new window.Razorpay(options)
-    rzp.open()
-  }
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
+
 
   const onsubmitHandler = async (event) => {
     event.preventDefault()
